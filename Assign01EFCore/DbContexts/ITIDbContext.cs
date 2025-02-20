@@ -24,6 +24,7 @@ namespace Assign01EFCore.DbContexts
         public DbSet<Course> Courses { get; set; }
         public DbSet<StudCourse> StudCourses { get;set; }
         public DbSet<Topic> Topic { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
     }
 }
