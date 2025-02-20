@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 namespace Assign01EFCore.Models
 {
     [Table("Course_Inst")]
-    internal class CourseInstractor
+    internal class CourseInstructor
     {
+        [Column(name: "Inst_Id")]
         [Key]
-        public int inst_ID {  get; set; }
-        public int Course_ID { get; set; }
-        public int Evaluate {  get; set; }
-
+        public int InstructorId { get; set; }
+        [Column(name: "Course_Id")]
+        public int CourseId { get;  set; }
+        [NotMapped]
+        public int evaluate {  get; set; }
     }
 }

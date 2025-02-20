@@ -3,6 +3,7 @@ using Assign01EFCore.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assign01EFCore.Migrations
 {
     [DbContext(typeof(ITIDbContext))]
-    partial class ITIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250220212424_CreateTopicTable")]
+    partial class CreateTopicTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,24 +23,6 @@ namespace Assign01EFCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Assign01EFCore.Models.CourseInstructor", b =>
-                {
-                    b.Property<int>("InstructorId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Inst_Id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InstructorId"));
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int")
-                        .HasColumnName("Course_Id");
-
-                    b.HasKey("InstructorId");
-
-                    b.ToTable("Course_Inst");
-                });
 
             modelBuilder.Entity("Assign01EFCore.Models.Department", b =>
                 {

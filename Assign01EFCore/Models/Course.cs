@@ -8,17 +8,16 @@ using System.Threading.Tasks;
 
 namespace Assign01EFCore.Models
 {
-    [Table("Course")]
     internal class Course
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        [Column(name: "Name", TypeName = "varchar")]
-        [MaxLength(50)]
-        public string? Name { get; set; }
-        public string? Description { get; set; }
-        public int TopId { get; set; }
-        public DateTime Duration { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        [Column(name: "Top_Id")]
+        public int TopicId { get; set; }
+
+        public string Duration { get; set; }
+
     }
 }

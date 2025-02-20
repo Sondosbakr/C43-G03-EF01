@@ -3,6 +3,7 @@ using Assign01EFCore.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assign01EFCore.Migrations
 {
     [DbContext(typeof(ITIDbContext))]
-    partial class ITIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250220211451_CreateSrudentCourseTable")]
+    partial class CreateSrudentCourseTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,48 +23,6 @@ namespace Assign01EFCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Assign01EFCore.Models.CourseInstructor", b =>
-                {
-                    b.Property<int>("InstructorId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("Inst_Id");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InstructorId"));
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int")
-                        .HasColumnName("Course_Id");
-
-                    b.HasKey("InstructorId");
-
-                    b.ToTable("Course_Inst");
-                });
-
-            modelBuilder.Entity("Assign01EFCore.Models.Department", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("HiringDate")
-                        .HasColumnType("int");
-
-                    b.Property<int>("InstructorId")
-                        .HasColumnType("int")
-                        .HasColumnName("Ins_Id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Departments");
-                });
 
             modelBuilder.Entity("Assign01EFCore.Models.Instructor", b =>
                 {
@@ -127,46 +88,6 @@ namespace Assign01EFCore.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("Assign01EFCore.Models.StudentCourse", b =>
-                {
-                    b.Property<int>("StudentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("StudId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentId"));
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int")
-                        .HasColumnName("CourseId");
-
-                    b.Property<int>("Grade")
-                        .HasColumnType("int");
-
-                    b.HasKey("StudentId");
-
-                    b.ToTable("StudCourse");
-                });
-
-            modelBuilder.Entity("Assign01EFCore.Models.Topic", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar")
-                        .HasColumnName("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Topic");
                 });
 #pragma warning restore 612, 618
         }
