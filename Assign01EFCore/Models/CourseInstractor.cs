@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Assign01EFCore.Models
 {
-    internal class Course_Inst
+    [Table("Course_Inst")]
+    internal class CourseInstractor
     {
         [Key]
         public int inst_ID {  get; set; }
