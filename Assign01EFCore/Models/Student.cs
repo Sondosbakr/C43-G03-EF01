@@ -22,6 +22,8 @@ namespace Assign01EFCore.Models
         [Column(name: "Address", TypeName ="varchar")]
         public string? Address { get; set; }
         [Column(name: "Dept_Id")]
+
         public int DepartmentId {  get; set; }
+        public Department Department { get; set; } = null!;
     }
 }

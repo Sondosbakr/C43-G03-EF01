@@ -3,6 +3,7 @@ using Assign01EFCore.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assign01EFCore.Migrations
 {
     [DbContext(typeof(ITIDbContext))]
-    partial class ITIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250226182408_DepartmentInstructorRelation")]
+    partial class DepartmentInstructorRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,37 +23,6 @@ namespace Assign01EFCore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Assign01EFCore.Models.Course", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Duration")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TopicId")
-                        .HasColumnType("int")
-                        .HasColumnName("Top_Id");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TopicId");
-
-                    b.ToTable("Course");
-                });
 
             modelBuilder.Entity("Assign01EFCore.Models.CourseInstructor", b =>
                 {
@@ -204,17 +176,6 @@ namespace Assign01EFCore.Migrations
                     b.ToTable("Topic");
                 });
 
-            modelBuilder.Entity("Assign01EFCore.Models.Course", b =>
-                {
-                    b.HasOne("Assign01EFCore.Models.Topic", "Topic")
-                        .WithMany("Courses")
-                        .HasForeignKey("TopicId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Topic");
-                });
-
             modelBuilder.Entity("Assign01EFCore.Models.Department", b =>
                 {
                     b.HasOne("Assign01EFCore.Models.Instructor", "Instructor")
@@ -245,11 +206,6 @@ namespace Assign01EFCore.Migrations
             modelBuilder.Entity("Assign01EFCore.Models.Instructor", b =>
                 {
                     b.Navigation("Departments");
-                });
-
-            modelBuilder.Entity("Assign01EFCore.Models.Topic", b =>
-                {
-                    b.Navigation("Courses");
                 });
 #pragma warning restore 612, 618
         }

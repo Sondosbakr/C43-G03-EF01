@@ -28,5 +28,6 @@ namespace Assign01EFCore.Models
         [Column(name: "Dept_Id")]
         public int DeparementId { get; set; }
 
+        public ICollection<Department> Departments { get; set; } = new HashSet<Department>();
     }
 }

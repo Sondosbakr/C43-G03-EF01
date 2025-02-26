@@ -14,10 +14,11 @@ namespace Assign01EFCore.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+        public string Duration { get; set; }
         [Column(name: "Top_Id")]
         public int TopicId { get; set; }
 
-        public string Duration { get; set; }
-
+        public Topic Topic { get; set; }
     }
 }

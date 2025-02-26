@@ -14,7 +14,14 @@ namespace Assign01EFCore.Models
         public int Id { get; set; }
         public string Name { get; set; }
         [Column(name: "Ins_Id")]
-        public int InstructorId { get; set; }
         public int HiringDate { get; set; }
+
+        
+        public ICollection<Student> Students { get; set; } = new HashSet<Student>();
+
+
+        public int InstructorId { get; set; }
+
+        public Instructor Instructor { get; set; }
     }
 }

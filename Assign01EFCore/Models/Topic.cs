@@ -16,5 +16,7 @@ namespace Assign01EFCore.Models
         [StringLength(10)]
         [Required]
         public string Name { get; set; }
+
+        public ICollection<Course> Courses { get; set; } = new HashSet<Course>();
     }
 }
