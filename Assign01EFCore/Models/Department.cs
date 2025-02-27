@@ -8,20 +8,21 @@ using System.Threading.Tasks;
 
 namespace Assign01EFCore.Models
 {
-    internal class Department
+    public class Department
     {
-        [Key]
+        
         public int Id { get; set; }
         public string Name { get; set; }
-        [Column(name: "Ins_Id")]
-        public int HiringDate { get; set; }
+        public DateOnly HiringDate { get; set; }
 
         
         public ICollection<Student> Students { get; set; } = new HashSet<Student>();
-
-
-        public int InstructorId { get; set; }
-
-        public Instructor Instructor { get; set; }
+        [ForeignKey(nameof(Manager))]
+        public int? ManagerId { get; set; }
+        [InverseProperty(nameof(Instructor.ManageDepartment))]
+        public Instructor Manager { get; set; }
+        
+        [InverseProperty(nameof(Instructor.WorkDepartment))]
+        public ICollection<Instructor> Instructors { get; set; } = new HashSet<Instructor>();
     }
 }

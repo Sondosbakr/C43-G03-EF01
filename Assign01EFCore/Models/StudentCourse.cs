@@ -5,20 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Assign01EFCore.Models
 {
-    [Table("StudCourse")]
-    internal class StudentCourse
+    [PrimaryKey(nameof(StudentId), nameof(CourseId))]
+    public class StudentCourse
     {
-        [Column(name: "StudId")]
-        [Key]
+        [ForeignKey(nameof(Student))]
         public int StudentId { get; set; }
-        [Column(name: "CourseId")]
+        [ForeignKey(nameof(Course))]
         public int CourseId { get; set; }
-        [Range(10, 100)]
-        public int Grade { get; set; }
-
+        public int? Grade { get; set; }
 
     }
 }

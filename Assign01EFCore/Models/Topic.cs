@@ -8,15 +8,12 @@ using System.Threading.Tasks;
 
 namespace Assign01EFCore.Models
 {
-    [Table("Topic")]
-    internal class Topic
+    public class Topic
     {
+        
         public int Id { get; set; }
-        [Column(name:"Name", TypeName ="varchar")]
-        [StringLength(10)]
-        [Required]
         public string Name { get; set; }
-
+        
         public ICollection<Course> Courses { get; set; } = new HashSet<Course>();
     }
 }

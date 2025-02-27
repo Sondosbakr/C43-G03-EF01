@@ -19,14 +19,18 @@ namespace Assign01EFCore.DbContexts
         {
             optionsBuilder.UseSqlServer("Server = .; Database = ITIDb; Trusted_Connection = true; Trusted_Connection = true; TrustServerCertificate=True");
         }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Instructor> Instructors { get; set; }
-        
-        public DbSet<StudentCourse> StudentsCourse { get; set; }
-        public DbSet<Department> Departments { get; set; }
-        public DbSet<Topic> Topic { get; set; }
 
-        public DbSet<CourseInstructor> courseInstructors { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+        }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Topic> Topics { get; set; }
+
+        
 
     }
 }

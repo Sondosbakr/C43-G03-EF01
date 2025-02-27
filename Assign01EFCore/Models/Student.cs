@@ -8,22 +8,20 @@ using System.Threading.Tasks;
 
 namespace Assign01EFCore.Models
 {
-    internal class Student
+    public class Student
     {
-        [Key]
+        
         public int Id { get; set; }
-        [Column(name: "FName", TypeName ="varchar")]
-        [StringLength(50, ErrorMessage = "Name Must be Less Than 51 Char", MinimumLength = 3)] // Application Validation Min
-        public string? FirstName { get; set; }
-
-        [Column(name: "LName", TypeName = "varchar")]
-        [StringLength(50, ErrorMessage = "Name Must be Less Than 51 Char", MinimumLength = 3)] // Application Validation Min
-        public string? LastName { get; set; }
-        [Column(name: "Address", TypeName ="varchar")]
+        public string FName { get; set; }
+        public string LName { get; set; }
         public string? Address { get; set; }
-        [Column(name: "Dept_Id")]
+        public int Age { get; set; }
 
-        public int DepartmentId {  get; set; }
+        
+        public ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
+        
+        [ForeignKey(nameof(Department))]
+        public int? DepartmentId { get; set; }
         public Department Department { get; set; } = null!;
     }
 }
